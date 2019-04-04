@@ -1,0 +1,64 @@
+#blockConnexion {
+position : absolute;
+top : 15px;
+right : 0px;
+ z-index : 1;
+}
+
+#connexionLink {
+position : fixed;
+top : 10px;
+right : 25px;
+ z-index : 1;
+}
+
+h1 {
+margin-top : 100px;
+}
+
+.center {
+	text-align: center;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+	background-color: #337AB7;
+	color: white;
+}
+/*
+.table-hover > tbody > tr.selected-ad > td,
+.table-hover > tbody > tr.selected-ad > th {
+	background-color: #4288CA;
+	color: white;
+}
+*/
+
+.spacer {
+	margin-top: 15px;
+}
+
+.spacer-left {
+	margin-left: 15px;
+}
+
+img.preview {
+	height : 150px;
+	cursor: pointer;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.largeText {
+	font-size: large;
+}
+
+.enlargedPicture {
+	border-style: solid;
+	border-width: medium;
+}

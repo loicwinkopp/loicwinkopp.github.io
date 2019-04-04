@@ -1,0 +1,76 @@
+
+<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<h1 class="center">QuickySale  {{nb}}</h1>
+					<div class="input-group">
+						<input id="search" type="text" class="form-control" placeholder="Rechercher" ng-model="search" />
+						<span class="input-group-btn"><button class="btn btn-default">Dépensez-votre argent !</button></span>
+					</div>
+					<select class="form-control spacer" ng-model="sortType" ng-show="currentAd == null">
+						<option value="dateReverse">Trier par date (du plus récent au plus ancien)</option>
+						<option value="date">Trier par date (du plus ancien au plus récent)</option>
+						<option value="price">Trier par prix (du moins cher au plus cher)</option>
+						<option value="priceReverse">Trier par prix (du plus cher au moins cher)</option>
+					</select>
+					<table class="table table-striped table-hover spacer" ng-show="currentAd == null">
+						<tbody>
+							<tr ng-class="{'selected-ad': ad == currentAd, 'clickable': true}" ng-click="toAd(ad)" ng-repeat="ad in ads | orderBy:sortField:reverse | filter:search">
+								<td>
+									<div class="row">
+										<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"><span class="largeText"><div class="label label-default">{{ad.date | date:'dd/MM/yyyy à hh:mm'}}</div></span></div>
+										<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"><span class="largeText">{{ad.title}}</span></div>
+										<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"><span class="largeText">{{ad.price | currency}}</span></div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<button class="btn btn-default spacer" ng-click="toAd()" ng-show="currentAd != null"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Retour</button>
+
+					<div class="center spacer well" ng-show="currentAd != null">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<h3>{{currentAd.title}}</h3>
+								<div class="largeText spacer">Posté le : <div class="label label-default">{{currentAd.date | date:'dd/MM/yyyy à hh:mm'}}</div></div>
+								<p class="spacer largeText" ng-bind-html="currentAd.description"></p>
+								<div class="spacer largeText">Dernière enchère : {{currentAd.price | currency}}</div>
+								<div class="input-group spacer">
+									<input id="bid-input" class="form-control" placeholder="Encherissez !">
+									<span class="input-group-btn"><button class="btn btn-default">Allez-y !</button></span>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<div class="spacer">
+									<img class="preview spacer-left" src="{{picture.url}}" ng-repeat="picture in currentAd.pictures" ng-click="enlargePicture(picture)" ng-class="{'enlargedPicture': picture == enlargedPicture}"/>
+								</div>
+								<div class="spacer"><img src="{{enlargedPicture.url}}" ng-show="enlargedPicture != null"></div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	<!--<input type="text" ng-model="query"/>
+	<select ng-model="order">
+		<option value="username">Organiser par nom</option>
+		<option value="message">Organiser par message</option>
+	</select>
+	<ul ng-init="users=[{username:'Jo', message:'Bonjour'}, {username:'Céline', message:'Vanakam'}, 
+		{username:'abdel', message:'Sbah'}]">
+		<li ng-repeat="user in users | filter:query | orderBy:order">{{user.username + " " + user.message }}</li>
+	</ul>-->
+
+<!--<select ng-model="selection">
+<option value="valeur1">Option 1</option>
+   <option value="valeur2">Option 2</option>
+   <option value="valeur3">Option 3</option> 
+  </select>
+  <div class="animate-switch-container"
+    ng-switch on="selection"><hr/>
+      <div class="animate-switch" ng-switch-when="valeur1">Settings Div</div>
+      <div class="animate-switch" ng-switch-when="valeur2">Home Span</div>
+      <div class="animate-switch" ng-switch-default>default</div>
+  </div>-->
